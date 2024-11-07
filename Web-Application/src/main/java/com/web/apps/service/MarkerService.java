@@ -67,4 +67,6 @@ public class MarkerService {
                 .description(marker.getDescription())
                 .image(marker.getImage()).build();
     }
+
+
 }

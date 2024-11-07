@@ -9,10 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Random;
 
 @Controller
 @RequestMapping(path = "/marker")
@@ -24,6 +21,7 @@ public class MarkerController {
     @GetMapping
     public String list(Model model) {
         model.addAttribute("markers", markerService.list());
+        markerService.list().forEach(System.out::println);
         model.addAttribute("title", "Marker");
         return "marker/index";
     }

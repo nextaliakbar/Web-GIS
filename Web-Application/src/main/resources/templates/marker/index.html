@@ -42,7 +42,7 @@
                                 <td th:text="${marker.name}"></td>
                                 <td th:text="${marker.latitude +' , '+ marker.longitude}"></td>
                                 <td th:text="${marker.description}"></td>
-                                <td></td>
+                                <td><img th:src="@{/assets/img/{image}(image=${marker.image})}" style="width: 100px; height: 100px; object-fit: cover;"></td>
                                 <td>
                                     <a
                                     class="btn btn-success"
@@ -60,7 +60,6 @@
                             </tr>
                             </tbody>
                         </table>
-
                     </div>
                 </div>
 
