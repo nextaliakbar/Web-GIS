@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MarkerRepository extends JpaRepository<Marker, String>, JpaSpecificationExecutor<Marker> {
+public interface MarkerRepository extends JpaRepository<Marker, Integer>, JpaSpecificationExecutor<Marker> {
 
     Marker findFirstById(Integer id);
 }

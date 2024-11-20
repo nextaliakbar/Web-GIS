@@ -22,4 +22,5 @@ public class MarkerModel {
     private String description;
 
     private String image;
+
 }

@@ -10,6 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Controller
 @RequestMapping(path = "/marker")
@@ -18,10 +21,12 @@ public class MarkerController {
     @Autowired
     private MarkerService markerService;
 
+    private final static String ROOT_DIR = Paths.get("").toAbsolutePath()
+    .resolve("upload").toString();
+
     @GetMapping
     public String list(Model model) {
         model.addAttribute("markers", markerService.list());
-        markerService.list().forEach(System.out::println);
         model.addAttribute("title", "Marker");
         return "marker/index";
     }
@@ -47,7 +52,9 @@ public class MarkerController {
     @RequestPart("file")MultipartFile file) {
 
         String filename = file.getOriginalFilename();
-        Path path = Path.of("src/main/resources/static/assets/img/" + filename);
+        Path uploadPath = Paths.get(ROOT_DIR);
+
+        Path path = uploadPath.resolve(filename);
 
         MarkerModel marker = new MarkerModel();
         marker.setName(markerModel.getName());
@@ -88,4 +95,5 @@ public class MarkerController {
         markerService.delete(id);
         return "redirect:/marker";
     }
+
 }

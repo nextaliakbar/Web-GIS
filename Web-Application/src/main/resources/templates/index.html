@@ -41,7 +41,7 @@
 
     markers.forEach(function (marker) {
       L.marker([marker.latitude, marker.longitude]).addTo(map)
-              .bindPopup("<b>"+marker.name+"</b><br><img src='/assets/img/"+marker.image+"' alt='Image' width='auto' height='150'><br>"+marker.description+"");
+              .bindPopup("<b>"+marker.name+"</b><br><img src='/upload/"+marker.image+"' alt='Image' width='auto' height='150'><br>"+marker.description+"");
     });
 
   </script>
